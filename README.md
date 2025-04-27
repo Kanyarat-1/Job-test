@@ -1,4 +1,4 @@
-<div style="display: flex; flex-direction: column; align-items: center;">
+<div style="width: 500px; background-color:blue">
   <img src="https://github.com/user-attachments/assets/8ed1e8ad-768f-4bf6-b749-331f4036baf3" style="margin-bottom: 10px;"> <br/>
   <img src="https://github.com/user-attachments/assets/42c51b6e-844c-49f9-8447-f5437c1bc8cc" style="margin-bottom: 10px;"> <br/>
   <img src="https://github.com/user-attachments/assets/93e9c8c0-9850-4d3c-9f7a-3e72c47a17fc" style="margin-bottom: 10px;"> <br/>
