@@ -1,5 +1,5 @@
-import 'package:flutter_application_cinemax/app/data/models/api_model.dart';
-import 'package:flutter_application_cinemax/app/data/providers/api_provider.dart';
+import 'package:flutter_application_cinemax/app/services/models/api_model.dart';
+import 'package:flutter_application_cinemax/app/services/providers/api_provider.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
@@ -8,19 +8,20 @@ class HomeController extends GetxController {
   final foundMovie = <Api>[].obs; // หนังที่ได้จากการค้นหา
   final searchMovie = ''.obs; // ค่าที่ค้นหา
 
-
   @override
   void onInit() {
-    fetchMoveie();
+    fetchMovie();
     super.onInit();
   }
 
-  void fetchMoveie() async {
+  void fetchMovie() async {
     try {
       var result = await Get.find<ApiProvider>().getApi();
       allMovie.clear();
       allMovie.addAll(result);
       foundMovie.value = allMovie;
+    } catch (e) {
+      print('Error: $e');
     } finally {
       isLoading(false);
     }
@@ -29,26 +30,22 @@ class HomeController extends GetxController {
   @override
   void onClose() {}
   void filterMovie(String input) {
-    List<Api> results =
-        []; // ประกาศตัวแปร results ให้เป็น Array โดยมีโครงสร้างแบบ List<Api>
+    List<Api> searchResults = []; 
     if (input.isEmpty) {
-      // ถ้า movieName ไม่มีค่าจะให้ค่าเริ่มต้นเหมือนกับ allMovie
-      results = allMovie;
+      searchResults = allMovie;
     } else {
-      results = allMovie
+      searchResults = allMovie
           .where((element) => element.movie
               .toString()
               .toLowerCase()
               .contains(input.toLowerCase()))
           .toList();
     }
-    foundMovie.value = results;
+    foundMovie.value = searchResults;
   }
 
   void clearSearch() {
     searchMovie.value = "";
     filterMovie('');
   }
-
-  
 }

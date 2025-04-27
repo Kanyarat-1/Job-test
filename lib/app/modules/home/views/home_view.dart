@@ -18,13 +18,11 @@ class SearchResultPage extends StatelessWidget {
         backgroundColor: background,
         body: Column(
           children: [
-            // ช่อง Search
             Padding(
               padding: const EdgeInsets.only(top: 40, left: 16, right: 16),
               child: Row(
                 children: [
                   Expanded(
-                    // ใช้ Obx เพื่อให้ UI อัปเดตตามค่าของ RxString
                     child: Obx(() {
                       return TextField(
                         controller: TextEditingController(text: controller.searchMovie.value),
@@ -62,20 +60,20 @@ class SearchResultPage extends StatelessWidget {
             Expanded(
               child: Obx(() {
                 if (controller.isLoading.value) {
-                  return Center(child: CircularProgressIndicator(color: label));
+                  return const Center(child: CircularProgressIndicator(color: label));
                 }
 
                 return ListView.builder(
                   itemCount: controller.foundMovie.length,
                   itemBuilder: (context, index) {
-                    final whoa = controller.foundMovie[index];
+                    final movie = controller.foundMovie[index];
                     return Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Get.to(const DetailPage(), arguments: whoa);
+                              Get.to(const DetailPage(), arguments: movie);
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +81,7 @@ class SearchResultPage extends StatelessWidget {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(8),
                                   child: Image.network(
-                                    '${whoa.poster}',
+                                    '${movie.poster}',
                                     width: 112,
                                     height: 147,
                                     fit: BoxFit.fill,
@@ -98,7 +96,7 @@ class SearchResultPage extends StatelessWidget {
                                       Teg(),
                                       SizedBox(height: 8),
                                       Text(
-                                        '${whoa.movie}',
+                                        '${movie.movie}',
                                         style: const TextStyle(
                                             color: textname,
                                             fontSize: 16,
@@ -110,7 +108,7 @@ class SearchResultPage extends StatelessWidget {
                                           CalendarIcon(),
                                           SizedBox(width: 8),
                                           Text(
-                                            '${whoa.year}',
+                                            '${movie.year}',
                                             style: const TextStyle(
                                                 color: textdetail),
                                           ),
@@ -122,7 +120,7 @@ class SearchResultPage extends StatelessWidget {
                                           ClockIcon(),
                                           SizedBox(width: 8),
                                           Text(
-                                            '${whoa.movieDuration}',
+                                            '${movie.movieDuration}',
                                             style: const TextStyle(
                                                 color: textdetail),
                                           ),

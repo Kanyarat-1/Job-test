@@ -1,4 +1,4 @@
-import 'package:flutter_application_cinemax/app/data/providers/api_provider.dart';
+import 'package:flutter_application_cinemax/app/services/providers/api_provider.dart';
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';

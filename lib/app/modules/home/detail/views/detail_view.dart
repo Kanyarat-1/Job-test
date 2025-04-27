@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_cinemax/app/data/models/api_model.dart';
+import 'package:flutter_application_cinemax/app/services/models/api_model.dart';
 import 'package:flutter_application_cinemax/app/widget/colors.dart';
 import 'package:flutter_application_cinemax/app/widget/custom_icon.dart';
-
 import 'package:get/get.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-
 import '../controllers/detail_controller.dart';
 
 class DetailPage extends GetView<DetailController> {
@@ -14,7 +12,7 @@ class DetailPage extends GetView<DetailController> {
   });
   @override
   Widget build(BuildContext context) {
-    final whoa = Get.arguments as Api;
+    final detailMovie = Get.arguments as Api;
 
     return Scaffold(
       backgroundColor: background,
@@ -27,7 +25,7 @@ class DetailPage extends GetView<DetailController> {
           },
         ),
         title: Text(
-          '${whoa.movie}',
+          '${detailMovie.movie}',
           style: const TextStyle(
             color: textname, 
             fontSize: 18,
@@ -45,7 +43,7 @@ class DetailPage extends GetView<DetailController> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: Image.network(
-                  '${whoa.poster}',
+                  '${detailMovie.poster}',
                   width: 250,
                   height: 350,
                   fit: BoxFit.fill,
@@ -61,7 +59,7 @@ class DetailPage extends GetView<DetailController> {
                       const CalendarIcon(),
                       const SizedBox(width: 8),
                       Text(
-                        '${whoa.year}',
+                        '${detailMovie.year}',
                         style: const TextStyle(
                           color: textdetail,
                           fontSize: 14,
@@ -83,7 +81,7 @@ class DetailPage extends GetView<DetailController> {
                       const ClockIcon(),
                       const SizedBox(width: 8),
                       Text(
-                        '${whoa.movieDuration}',
+                        '${detailMovie.movieDuration}',
                         style: const TextStyle(
                           color: textdetail,
                           fontSize: 14,
@@ -101,7 +99,7 @@ class DetailPage extends GetView<DetailController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Director: ${whoa.director}',
+                      'Director: ${detailMovie.director}',
                       style: const TextStyle(
                         color: textdetail,
                         fontSize: 16,
@@ -111,7 +109,7 @@ class DetailPage extends GetView<DetailController> {
                     const SizedBox(height: 8),
 
                     Text(
-                      'Character: ${whoa.character}',
+                      'Character: ${detailMovie.character}',
                       style: const TextStyle(
                         color: textdetail,
                         fontSize: 16,

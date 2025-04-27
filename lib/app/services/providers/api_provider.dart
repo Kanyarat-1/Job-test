@@ -1,4 +1,4 @@
-import 'package:flutter_application_cinemax/app/data/models/api_model.dart';
+import 'package:flutter_application_cinemax/app/services/models/api_model.dart';
 import 'package:get/get.dart';
 
 class ApiProvider extends GetConnect {
